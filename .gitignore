@@ -1,0 +1,9 @@
+app/app.js
+
+app/server.js
+app/app.js.map
+app/server.js.map
+.vs/config/applicationhost.config
+*.tmp
+/obj/Debug/TradePlantReportViewerTS.njsproj.FileListAbsolute.txt
+/node_modules/**
