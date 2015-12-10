@@ -1,16 +1,16 @@
 {
-  "name": "TradePlantReportViewer",
-  "private": true,
-  "version": "0.0.0",
-  "description": "TradePlant Incident Report Viewer",
-  "repository": "http://git.elt.apps.baml.com:8080/git/zk4fcsx/TradePlantReportViewer.git",
-  "license": "MIT",
-  "dependencies": {
-    "ag-grid": "^2.3.5",
-    "angular": "^1.4.8",
-    "bootstrap": "^3.3.6",
-    "express": "^4.13.3",
-    "mysql": "^2.9.0",
-    "tsd": "^0.6.5"
-  }
+    "name": "NodeAngularTypeScript",
+    "private": true,
+    "version": "0.0.0",
+    "description": "NodeAngularTypeScript",
+    "repository": "https://github.com/moonolgerd/MyNodeAngularTypeScript.git",
+    "license": "MIT",
+    "dependencies": {
+        "ag-grid": "^2.3.5",
+        "angular": "^1.4.8",
+        "bootstrap": "^3.3.6",
+        "express": "^4.13.3",
+        "mysql": "^2.9.0",
+        "tsd": "^0.6.5"
+    }
 }
