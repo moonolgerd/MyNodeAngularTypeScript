@@ -1,12 +1,10 @@
 ﻿import express = require('express');
 var app = express();
-import mysql = require('mysql');
-var connectionpool = mysql.createPool({
-    host: 'host',
-    user: 'user',
-    password: 'password',
-    database: 'database'
-});
+import mongodb = require('mongodb');
+
+var mongoClient = mongodb.MongoClient;
+
+var url = 'mongodb://localhost:27017/myproject';
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
@@ -20,37 +18,36 @@ app.use((req, res, next) => {
 );
 
 app.get('/results', (req, res) => {
-    connectionpool.getConnection((err, connection) => {
-        if (err) {
-            console.error('CONNECTION error: ', err);
-            res.statusCode = 503;
-            res.send({
-                result: 'error',
-                err: err.code
-            });
-        } else {
-            connection.query('SELECT * FROM table',
-                (error, rows, fields) => {
-                    if (error) {
-                        console.error(error);
-                        res.statusCode = 500;
-                        res.send({
-                            result: 'error',
-                            err: error.code
-                        });
-                    }
-                    res.send({
-                        result: 'success',
-                        err: '',
-                        fields: fields,
-                        json: rows,
-                        length: rows.length
-                    });
-                    connection.release();
-                });
-        }
+    mongoClient.connect(url, function (err, db) {
+        console.log("Connected correctly to server");
+        findDocuments(db, function () {
+            db.close();
+        });
     });
 });
+
+var insertDocuments = function (db, callback) {
+    // Get the documents collection
+    var collection = db.collection('documents');
+    // Insert some documents
+    collection.insertMany([
+        { a: 1 }, { a: 2 }, { a: 3 }
+    ], function (err, result) {
+        console.log("Inserted 3 documents into the document collection");
+        callback(result);
+    });
+}
+
+var findDocuments = function (db, callback) {
+    // Get the documents collection
+    var collection = db.collection('documents');
+    // Find some documents
+    collection.find({}).toArray(function (err, docs) {
+        console.log("Found the following records");
+        console.dir(docs)
+        callback(docs);
+    });
+}
 
 app.get('/', (req, res) => res.sendfile('app/index.html'));
 
