@@ -5,8 +5,8 @@ h1 {
   font-size: 250%;
 }
 h2, h3 {
-  color: Blue;
-  font-family: Arial, Helvetica, sans-serif;
+  color: Red;
+  font-family: serif;
   font-weight: lighter;
 }
 body {

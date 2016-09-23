@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "ES6",
+		"target": "ES2015",
 		"module": "commonjs",
 		"moduleResolution": "node",
 		"sourceMap": true,
@@ -8,5 +8,8 @@
 		"emitDecoratorMetadata": true,
     	"removeComments": false,
     	"noImplicitAny": false
-	}
+	},
+	"exclude": [
+		"node_modules"
+	]
 }

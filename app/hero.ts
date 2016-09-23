@@ -1,5 +1,5 @@
 export class Hero {
   id: number;
   name: string;
-  age : number
+  age : number;
 }

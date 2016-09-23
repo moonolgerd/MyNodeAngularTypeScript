@@ -17,34 +17,34 @@ app.use((req, res, next) => {
     express.static('.')
 );
 
-app.get('/results', (req, res) => {
-    mongoClient.connect(url, function (err, db) {
+app.get('/results', () => {
+    mongoClient.connect(url, (err, db) => {
         console.log("Connected correctly to server");
-        findDocuments(db, function () {
+        findDocuments(db, () => {
             db.close();
         });
     });
 });
 
-var insertDocuments = function (db, callback) {
+var insertDocuments = (db, callback) => {
     // Get the documents collection
     var collection = db.collection('documents');
     // Insert some documents
     collection.insertMany([
         { a: 1 }, { a: 2 }, { a: 3 }
-    ], function (err, result) {
+    ], (err, result) => {
         console.log("Inserted 3 documents into the document collection");
         callback(result);
     });
 }
 
-var findDocuments = function (db, callback) {
+var findDocuments = (db, callback) => {
     // Get the documents collection
     var collection = db.collection('documents');
     // Find some documents
-    collection.find({}).toArray(function (err, docs) {
+    collection.find({}).toArray((err, docs) => {
         console.log("Found the following records");
-        console.dir(docs)
+        console.dir(docs);
         callback(docs);
     });
 }
