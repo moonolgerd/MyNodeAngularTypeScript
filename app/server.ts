@@ -1,6 +1,6 @@
-﻿import express = require('express');
+﻿import * as express from 'express';
 var app = express();
-import mongodb = require('mongodb');
+import * as mongodb from 'mongodb';
 
 var mongoClient = mongodb.MongoClient;
 
