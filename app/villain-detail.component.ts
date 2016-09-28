@@ -4,13 +4,12 @@ import { Villain } from './villain';
   selector: 'my-villain-detail',
   template: `
     <div *ngIf="villain">
-      <h2>{{villain.name}} details!</h2>
+      <h2>{{villainhero.name}} details!</h2>
       <div><label>id: </label>{{villain.id}}</div>
       <div>
-        <label>Name: </label>
+        <label>name: </label>
         <input [(ngModel)]="villain.name" placeholder="name"/>
       </div>
-      <div><label>Type: </label>{{villain.type}}</div>
     </div>
   `
 })

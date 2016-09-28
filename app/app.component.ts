@@ -1,21 +1,22 @@
 import { Component } from '@angular/core';
 import { Hero } from './hero';
-import { Villain, VillainType } from './villain';
+import { Villain } from './villain';
 const HEROES: Hero[] = [
-    { id: 1, name: 'Mr. Nice', age: 24 },
-    { id: 2, name: 'Narco', age: 50 },
-    { id: 3, name: 'Bombasto', age: 16 },
-    { id: 4, name: 'Celeritas', age: 35 },
-    { id: 5, name: 'Magneta', age: 15 },
-    { id: 6, name: 'RubberMan', age: 10 },
-    { id: 7, name: 'Dynama', age: 88 },
-    { id: 8, name: 'Dr IQ', age: 666 },
-    { id: 9, name: 'Magma', age: 65 },
-    { id: 10, name: 'Tornado', age: 76 }
+  { id: 11, name: 'Mr. Nice', age: 24 },
+  { id: 12, name: 'Narco', age: 50 },
+  { id: 13, name: 'Bombasto', age: 16 },
+  { id: 14, name: 'Celeritas', age: 35 },
+  { id: 15, name: 'Magneta', age: 15 },
+  { id: 16, name: 'RubberMan', age: 10 },
+  { id: 17, name: 'Dynama', age: 88 },
+  { id: 18, name: 'Dr IQ', age : 666 },
+  { id: 19, name: 'Magma', age: 65 },
+  { id: 20, name: 'Tornado', age: 76 }
 ];
-const Villains: Villain[] = [
-    { id: 13, name: 'Diablo', type: VillainType.Warlock },
-    { id: 666, name: 'OldCrow', type: VillainType.DarkNight }
+const VILLAINS: Villain[] = [
+  { id: 11, name: 'Diablo', level: 100 },
+  { id: 12, name: 'Shodan', level: 256 },
+  { id: 13, name: 'Joker', level: 50 }
 ];
 @Component({
     selector: 'my-app',
@@ -30,10 +31,9 @@ const Villains: Villain[] = [
       </li>
     </ul>
     <my-hero-detail [hero]="selectedHero"></my-hero-detail>
-    <h2>Villains</h2>
     <ul class="villains">
-       <li *ngFor="let villain of villains">
-        <span class="badge">{{villain.id}}</span> {{villain.name}} is {{villain.type}}
+      <li *ngFor="let villain of villains">
+        <span class="badge">{{villain.id}}</span> {{villain.name}} is {{villain.level}}
       </li>
     </ul>
   `,
@@ -42,9 +42,6 @@ const Villains: Villain[] = [
       background-color: #CFD8DC !important;
       color: white;
     }
-    .villains {
-
-    },
     .heroes {
       margin: 0 0 2em 0;
       list-style-type: none;
@@ -88,14 +85,20 @@ const Villains: Villain[] = [
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
     }
+    .villains {
+      margin: 0 50 2em 0;
+      list-style-type: none;
+      padding: 0;
+      width: 15em;
+    }
   `]
 })
 export class AppComponent {
-    title = 'Not exactly my cup of tea';
-    heroes = HEROES;
-    villains = Villains;
-    selectedHero: Hero;
-    onSelect(hero: Hero): void {
-        this.selectedHero = hero;
-    }
+  title = 'My Heroic Quest';
+  heroes = HEROES;
+  villains = VILLAINS;
+  selectedHero: Hero;
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero;
+  }
 }
