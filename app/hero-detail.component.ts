@@ -10,6 +10,10 @@ import { Hero } from './hero';
         <label>name: </label>
         <input [(ngModel)]="hero.name" placeholder="name"/>
       </div>
+      <div>
+        <label>age: </label>
+        <input [(ngModel)]="hero.age" placeholder="age"/>
+      </div>
     </div>
   `
 })

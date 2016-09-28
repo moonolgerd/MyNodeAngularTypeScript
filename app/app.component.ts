@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Hero } from './hero';
+import { Villain } from './villain';
 const HEROES: Hero[] = [
   { id: 11, name: 'Mr. Nice', age: 24 },
   { id: 12, name: 'Narco', age: 50 },
@@ -11,6 +12,11 @@ const HEROES: Hero[] = [
   { id: 18, name: 'Dr IQ', age : 666 },
   { id: 19, name: 'Magma', age: 65 },
   { id: 20, name: 'Tornado', age: 76 }
+];
+const VILLAINS: Villain[] = [
+  { id: 11, name: 'Diablo', level: 100 },
+  { id: 12, name: 'Shodan', level: 256 },
+  { id: 13, name: 'Joker', level: 50 }
 ];
 @Component({
   selector: 'my-app',
@@ -25,6 +31,11 @@ const HEROES: Hero[] = [
       </li>
     </ul>
     <my-hero-detail [hero]="selectedHero"></my-hero-detail>
+    <ul class="villains">
+      <li *ngFor="let villain of villains">
+        <span class="badge">{{villain.id}}</span> {{villain.name}} is {{villain.level}}
+      </li>
+    </ul>
   `,
   styles: [`
     .selected {
@@ -74,11 +85,18 @@ const HEROES: Hero[] = [
       margin-right: .8em;
       border-radius: 4px 0 0 4px;
     }
+    .villains {
+      margin: 0 50 2em 0;
+      list-style-type: none;
+      padding: 0;
+      width: 15em;
+    }
   `]
 })
 export class AppComponent {
-  title = 'Tour of Heroes';
+  title = 'My Heroic Quest';
   heroes = HEROES;
+  villains = VILLAINS;
   selectedHero: Hero;
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
