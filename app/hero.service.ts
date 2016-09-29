@@ -1,22 +1,26 @@
 import { Injectable } from '@angular/core';
+import { Headers, Http } from '@angular/http';
+
+import 'rxjs/add/operator/toPromise';
+
 import { Hero } from './hero';
 
 @Injectable()
 export class HeroService {
 
-    constructor() { }
+    private headers = new Headers({ 'Content-Type': 'application/json' });
+    private heroesUrl = 'http://localhost:5000/api/values';  // URL to web api
+
+    constructor(private http: Http) { }
     getHeroes(): Promise<Hero[]> {
-        return Promise.resolve([
-            { id: 11, name: 'Mr. Nice', age: 24 },
-            { id: 12, name: 'Narco', age: 50 },
-            { id: 13, name: 'Bombasto', age: 16 },
-            { id: 14, name: 'Celeritas', age: 35 },
-            { id: 15, name: 'Magneta', age: 15 },
-            { id: 16, name: 'RubberMan', age: 10 },
-            { id: 17, name: 'Dynama', age: 88 },
-            { id: 18, name: 'Dr IQ', age: 666 },
-            { id: 19, name: 'Magma', age: 65 },
-            { id: 20, name: 'Tornado', age: 76 }
-        ]);
+        return this.http.get(this.heroesUrl)
+            .toPromise()
+            .then(response => response.json().data as Hero[])
+            .catch(this.handleError);
+    }
+
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
     }
 }

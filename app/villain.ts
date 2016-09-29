@@ -1,5 +1,6 @@
 export class Villain {
   id: number;
   name: string;
-  level: number
+  level: number;
+  role: string;
 }
