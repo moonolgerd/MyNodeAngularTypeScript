@@ -1,26 +1,17 @@
 import { Component } from '@angular/core';
 import { Hero } from './hero';
 import { Villain } from './villain';
-const HEROES: Hero[] = [
-  { id: 11, name: 'Mr. Nice', age: 24 },
-  { id: 12, name: 'Narco', age: 50 },
-  { id: 13, name: 'Bombasto', age: 16 },
-  { id: 14, name: 'Celeritas', age: 35 },
-  { id: 15, name: 'Magneta', age: 15 },
-  { id: 16, name: 'RubberMan', age: 10 },
-  { id: 17, name: 'Dynama', age: 88 },
-  { id: 18, name: 'Dr IQ', age : 666 },
-  { id: 19, name: 'Magma', age: 65 },
-  { id: 20, name: 'Tornado', age: 76 }
-];
+import { HeroService } from './hero.service';
+import { OnInit } from '@angular/core';
 const VILLAINS: Villain[] = [
   { id: 11, name: 'Diablo', level: 100 },
   { id: 12, name: 'Shodan', level: 256 },
-  { id: 13, name: 'Joker', level: 50 }
+  { id: 13, name: 'Joker', level: 50 },
+  { id: 666, name: 'Wild Hunt', level: 99999 }
 ];
 @Component({
-    selector: 'my-app',
-    template: `
+  selector: 'my-app',
+  template: `
     <h1>{{title}}</h1>
     <h2>My Heroes</h2>
     <ul class="heroes">
@@ -37,7 +28,7 @@ const VILLAINS: Villain[] = [
       </li>
     </ul>
   `,
-    styles: [`
+  styles: [`
     .selected {
       background-color: #CFD8DC !important;
       color: white;
@@ -93,11 +84,22 @@ const VILLAINS: Villain[] = [
     }
   `]
 })
-export class AppComponent {
+
+export class AppComponent implements OnInit {
+
+  constructor(private heroService: HeroService) { }
+
   title = 'My Heroic Quest';
-  heroes = HEROES;
+  heroes: Hero[];
   villains = VILLAINS;
   selectedHero: Hero;
+
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+  getHeroes(): void {
+    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+  }
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }

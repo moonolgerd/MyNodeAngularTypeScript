@@ -9,5 +9,5 @@
         "**/*.js.map": true,
         "**/node_modules": true
     },
-    "typescript.tsdk": "C:\\Users\\omerkulov\\AppData\\Roaming\\npm\\node_modules\\typescript\\lib"
+    "typescript.tsdk": "C:\\Users\\Oleg\\AppData\\Roaming\\npm\\node_modules\\typescript\\lib"
 }
