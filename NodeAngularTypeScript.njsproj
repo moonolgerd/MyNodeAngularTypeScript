@@ -22,6 +22,8 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Content Include="app\hero-detail.component.html" />
+    <Content Include="app\villain-detail.component.html" />
     <Content Include="index.html" />
     <Content Include="package.json" />
     <Content Include="app\index.html" />
@@ -37,9 +39,11 @@
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\app.ts" />
     <TypeScriptCompile Include="app\hero-detail.component.ts" />
+    <TypeScriptCompile Include="app\hero.service.ts" />
     <TypeScriptCompile Include="app\hero.ts" />
     <TypeScriptCompile Include="app\server.ts" />
     <TypeScriptCompile Include="app\villain-detail.component.ts" />
+    <TypeScriptCompile Include="app\villain.service.ts" />
     <TypeScriptCompile Include="app\villain.ts" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
