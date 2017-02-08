@@ -18,8 +18,8 @@ import 'rxjs/add/operator/toPromise';
 
 @Component({
   selector: 'my-app',
-  template: 'app/app.component.html',
-  styles: ['app/app.component.css']
+  templateUrl: 'app/app.component.html',
+  styleUrls: ['app/app.component.css']
 })
 
 export class AppComponent implements OnInit {
