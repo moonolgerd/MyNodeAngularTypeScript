@@ -9,7 +9,10 @@
         <label>Age: </label>
         <input [(ngModel)]="hero.age" type="number" width="25" placeholder="age" />
     </div>
-    <button (click)="addHero(hero);">
-        Add Hero
+    <button (click)="editHero(hero);">
+        Edit Hero
+    </button>
+    <button (click)="deleteHero(hero.id);">
+        Delete Hero
     </button>
 </div>

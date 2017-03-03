@@ -3,7 +3,8 @@ import { Hero } from './hero';
 import { HeroService } from './hero.service';
 @Component({
   selector: 'my-hero-detail',
-  templateUrl: 'app/hero-detail.component.html'
+  templateUrl: 'app/hero-detail.component.html',
+  styleUrls: [`/app/hero-detail.component.css`]
 })
 export class HeroDetailComponent {
 
@@ -12,9 +13,15 @@ export class HeroDetailComponent {
   @Input()
   hero: Hero;
 
+deleteHero(id: number) {
+  this.heroService.deleteHero(id).subscribe(hero =>
+  {
+    hero.deleted = true;
+  });
+}
 
-  addHero(hero: Hero) {
-    this.heroService.addHero(hero).subscribe(
+  editHero(hero: Hero) {
+    this.heroService.editHero(hero).subscribe(
       hero => this.hero = hero);
     //    error =>  this.errorMessage = <any>error);
   }
