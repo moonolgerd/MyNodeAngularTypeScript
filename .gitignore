@@ -7,3 +7,4 @@ app/*.js.map
 /.vs/NodeAngularTS/v14
 /bin
 *.dat
+.vscode/chrome/**
