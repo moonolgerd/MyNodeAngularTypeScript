@@ -4,7 +4,7 @@ app/*.js.map
 *.tmp
 /obj/**
 /node_modules/**
-/.vs/NodeAngularTS/v14
 /bin
 *.dat
 .vscode/chrome/**
+/.vs/**
