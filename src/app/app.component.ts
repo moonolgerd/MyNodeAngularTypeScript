@@ -17,15 +17,12 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
 
 @Component({
-  selector: 'my-app',
-  templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
 
 export class AppComponent implements OnInit {
-
-  constructor(private heroService: HeroService, private villainService: VillainService) { }
-
   title = 'My Heroic Quest';
   heroes: Hero[];
   villains: Villain[];
@@ -36,6 +33,8 @@ export class AppComponent implements OnInit {
     { value: 'F', display: 'Female' },
     { value: 'M', display: 'Male' }
   ];
+
+  constructor(private heroService: HeroService, private villainService: VillainService) { }
 
   ngOnInit(): void {
     this.getHeroes();

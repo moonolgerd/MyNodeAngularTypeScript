@@ -11,7 +11,7 @@ export class HeroService {
 
     private headers = new Headers(
         { 'Content-Type': 'application/json' });
-        //'Access-Control-Allow-Origin' : '*'});
+    //'Access-Control-Allow-Origin' : '*'});
     private heroesUrl = 'http://localhost:5000/api/heroes';  // URL to web api
 
     constructor(private http: Http) { }
@@ -25,16 +25,16 @@ export class HeroService {
     editHero(hero: Hero): Observable<Hero> {
         const options = new RequestOptions({ headers: this.headers });
 
-        return this.http.put(this.heroesUrl + "/" + hero.id, hero, options)
-            .map((r:Response) => r.json())
+        return this.http.put(this.heroesUrl + '/' + hero.id, hero, options)
+            .map((r: Response) => r.json())
             .catch(this.handleError);
     }
 
     deleteHero(id: number): Observable<Hero> {
         //const options = new RequestOptions({ headers: this.headers, method:  RequestMethod.Delete});
-        var myString = `${this.heroesUrl}/${id.toString()}`;
+        const myString = `${this.heroesUrl}/${id.toString()}`;
         return this.http.delete(myString)
-            .map((r:Response) => r.json())
+            .map((r: Response) => r.json())
             .catch(this.handleError);
     }
 

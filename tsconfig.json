@@ -1,16 +1,20 @@
 {
+	"compileOnSave": false,
 	"compilerOptions": {
-		"target": "ES2015",
-		"module": "commonjs",
+		"outDir": "./dist/out-tsc",
+		"baseUrl": "src",
+		"target": "es5",
 		"moduleResolution": "node",
 		"sourceMap": true,
+		"declaration": false,
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
-    	"removeComments": false,
-    	"noImplicitAny": false
-	},
-	"compileOnSave": true,
-	"exclude": [
-		"node_modules"
-	]
+		"typeRoots": [
+			"node_modules/@types"
+		],
+		"lib": [
+			"es2016",
+			"dom"
+		]
+	}
 }

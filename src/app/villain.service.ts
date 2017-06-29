@@ -12,7 +12,7 @@ export class VillainService {
     private villainsUrl = 'http://localhost:5000/api/villains';  // URL to web api
 
     constructor(private http: Http) { }
-    
+
     getVillains(): Promise<Villain[]> {
         return this.http.get(this.villainsUrl)
             .toPromise()
