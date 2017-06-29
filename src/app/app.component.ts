@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   heroes: Hero[];
   villains: Villain[];
   selectedHero: Hero;
+  selectedVillain: Villain;
   errorMessage: string;
 
   genders = [
@@ -49,5 +50,9 @@ export class AppComponent implements OnInit {
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
+  }
+
+  onSelectVillain(villan: Villain): void {
+    this.selectedVillain = villan;
   }
 }

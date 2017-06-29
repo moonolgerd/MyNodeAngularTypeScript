@@ -1,8 +1,22 @@
-<div *ngIf="villain">
-    <h2>{{villainhero.name}} details!</h2>
+<div>
+    <h2>{{villain.name}} details!</h2>
     <div><label>id: </label>{{villain.id}}</div>
     <div>
         <label>name: </label>
         <input [(ngModel)]="villain.name" placeholder="name" />
+        <label>level: </label>
+        <input type="number" [(ngModel)]="villain.level" placeholder="level" />
+        <label>role: </label>
+        <select [(ngModel)]="villain.role">
+            <option *ngFor="let role of roles" [value]="role">
+     {{role}}
+            </option>
+        </select>
     </div>
+    <button (click)="editVillain(villain);">
+        Edit Villain
+    </button>
+    <button (click)="deleteVillain(villain.id);">
+        Delete Villain
+    </button>
 </div>

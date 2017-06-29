@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Headers, Http, RequestOptions, Response, RequestMethod } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -20,6 +21,20 @@ export class VillainService {
             .catch(this.handleError);
     }
 
+    deleteVillain(id: number): Observable<Villain> {
+        // const options = new RequestOptions({ headers: this.headers, method:  RequestMethod.Delete});
+        const myString = `${this.villainsUrl}/${id.toString()}`;
+        return this.http.delete(myString)
+            .map((r: Response) => r.json())
+            .catch(this.handleError);
+    }
+    editVillain(villain: Villain): Observable<Villain> {
+        const options = new RequestOptions({ headers: this.headers });
+
+        return this.http.put(this.villainsUrl + '/' + villain.id, villain, options)
+            .map((r: Response) => r.json())
+            .catch(this.handleError);
+    }
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
