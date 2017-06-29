@@ -19,7 +19,7 @@ export class HeroDetailComponent {
 
   editHero(hero: Hero) {
     this.heroService.editHero(hero).subscribe(
-      hero => this.hero = hero);
+      myHero => this.hero = myHero);
     //    error =>  this.errorMessage = <any>error);
   }
 }

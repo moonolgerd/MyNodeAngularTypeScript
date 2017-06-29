@@ -11,7 +11,7 @@ export class HeroService {
 
     private headers = new Headers(
         { 'Content-Type': 'application/json' });
-    //'Access-Control-Allow-Origin' : '*'});
+    // 'Access-Control-Allow-Origin' : '*'});
     private heroesUrl = 'http://localhost:5000/api/heroes';  // URL to web api
 
     constructor(private http: Http) { }
@@ -31,7 +31,7 @@ export class HeroService {
     }
 
     deleteHero(id: number): Observable<Hero> {
-        //const options = new RequestOptions({ headers: this.headers, method:  RequestMethod.Delete});
+        // const options = new RequestOptions({ headers: this.headers, method:  RequestMethod.Delete});
         const myString = `${this.heroesUrl}/${id.toString()}`;
         return this.http.delete(myString)
             .map((r: Response) => r.json())
