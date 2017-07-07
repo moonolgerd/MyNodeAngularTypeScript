@@ -13,13 +13,13 @@ export class VillainDetailComponent {
   constructor(private villainService: VillainService) { }
 
   deleteVillain(id: number) {
-    this.villainService.deleteVillain(id).subscribe(villain => {
+    this.villainService.delete(id).subscribe(villain => {
 
     });
   }
 
   editVillain(villain: Villain) {
-    this.villainService.editVillain(villain).subscribe(
+    this.villainService.edit(villain).subscribe(
       myVillain => this.villain = myVillain);
     //    error =>  this.errorMessage = <any>error);
   }

@@ -42,10 +42,10 @@ export class AppComponent implements OnInit {
     this.getVillains();
   }
   getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    this.heroService.get().then(heroes => this.heroes = heroes);
   }
   getVillains(): void {
-    this.villainService.getVillains().then(villains => this.villains = villains);
+    this.villainService.get().then(villains => this.villains = villains);
   }
 
   onSelect(hero: Hero): void {

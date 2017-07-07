@@ -12,13 +12,13 @@ export class HeroDetailComponent {
   constructor(private heroService: HeroService) { }
 
   deleteHero(id: number) {
-    this.heroService.deleteHero(id).subscribe(hero => {
+    this.heroService.delete(id).subscribe(hero => {
       hero.deleted = true;
     });
   }
 
   editHero(hero: Hero) {
-    this.heroService.editHero(hero).subscribe(
+    this.heroService.edit(hero).subscribe(
       myHero => this.hero = myHero);
     //    error =>  this.errorMessage = <any>error);
   }
