@@ -17,42 +17,49 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/toPromise';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 
 export class AppComponent implements OnInit {
-  title = 'My Heroic Quest';
-  heroes: Hero[];
-  villains: Villain[];
-  selectedHero: Hero;
-  selectedVillain: Villain;
-  errorMessage: string;
+    title = 'My Heroic Quest';
+    heroes: Hero[];
+    villains: Villain[];
+    selectedHero: Hero;
+    selectedVillain: Villain;
+    errorMessage: string;
 
-  genders = [
-    { value: 'F', display: 'Female' },
-    { value: 'M', display: 'Male' }
-  ];
+    constructor(private heroService: HeroService, private villainService: VillainService) { }
 
-  constructor(private heroService: HeroService, private villainService: VillainService) { }
+    ngOnInit(): void {
+        this.getHeroes();
+        this.getVillains();
+    }
+    async getHeroes(): Promise<any> {
+        this.heroes = await this.heroService.get();
+    }
+    async getVillains(): Promise<any> {
+        this.villains = await this.villainService.get();
+    }
 
-  ngOnInit(): void {
-    this.getHeroes();
-    this.getVillains();
-  }
-  getHeroes(): void {
-    this.heroService.get().then(heroes => this.heroes = heroes);
-  }
-  getVillains(): void {
-    this.villainService.get().then(villains => this.villains = villains);
-  }
+    addHero() {
+        this.selectedHero = <Hero>{
+            name: 'New Hero'
+        };
+    }
 
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
+    addVillain(): void {
+        this.selectedVillain = <Villain>{
+            name: 'New Villain'
+        };
+    }
 
-  onSelectVillain(villan: Villain): void {
-    this.selectedVillain = villan;
-  }
+    onSelect(hero: Hero): void {
+        this.selectedHero = hero;
+    }
+
+    onSelectVillain(villan: Villain): void {
+        this.selectedVillain = villan;
+    }
 }

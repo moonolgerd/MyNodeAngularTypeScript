@@ -16,12 +16,16 @@ export class HeroService implements IGenericService<Hero> {
     private heroesUrl = 'http://localhost:5000/api/heroes';  // URL to web api
 
     constructor(private http: Http) { }
-    get(): Promise<Hero[]> {
-        return this.http.get(this.heroesUrl)
-            .toPromise()
-            .then(response => response.json() as Hero[])
-            .catch(this.handleError);
+    async get(): Promise<Hero[]> {
+        const response = await this.http.get(this.heroesUrl).toPromise()
+        return response.json() as Hero[];
     }
+
+    async add(hero: Hero): Promise<Hero> {
+        const options = new RequestOptions({ headers: this.headers });
+        const response = await this.http.post(this.heroesUrl, hero).toPromise();
+        return response.json() as Hero;
+    };
 
     edit(hero: Hero): Observable<Hero> {
         const options = new RequestOptions({ headers: this.headers });

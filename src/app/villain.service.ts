@@ -14,11 +14,9 @@ export class VillainService implements IGenericService<Villain> {
 
     constructor(private http: Http) { }
 
-    get(): Promise<Villain[]> {
-        return this.http.get(this.villainsUrl)
-            .toPromise()
-            .then(response => response.json() as Villain[])
-            .catch(this.handleError);
+    async get(): Promise<Villain[]> {
+        const response = await this.http.get(this.villainsUrl).toPromise();
+        return response.json() as Villain[];
     }
 
     delete(id: number): Observable<Villain> {

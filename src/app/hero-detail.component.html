@@ -8,10 +8,19 @@
         <label>Age: </label>
         <input [(ngModel)]="hero.age" type="number" width="25" placeholder="age" />
     </div>
-    <button (click)="editHero(hero);">
+    <div>
+        <label>Gender:</label>
+        <select [(ngModel)]="hero.gender">
+            <option *ngFor="let gender of genders" [value]="gender.value">
+            {{gender.display}}
+            </option>
+        </select>
+    </div>
+    <button (click)="addHero(hero)">Add Hero</button>
+    <button (click)="editHero(hero);" *ngIf="existing">
         Edit Hero
     </button>
-    <button (click)="deleteHero(hero.id);">
+    <button (click)="deleteHero(hero.id);" *ngIf="existing">
         Delete Hero
     </button>
 </div>
