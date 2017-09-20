@@ -1,6 +1,7 @@
 {
 	"compileOnSave": false,
 	"compilerOptions": {
+        "watch": true,
 		"outDir": "./dist/out-tsc",
 		"baseUrl": "src",
 		"target": "es5",
