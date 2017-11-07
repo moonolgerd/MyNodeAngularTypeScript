@@ -19,6 +19,10 @@ export class HeroDetailComponent {
 
     constructor(private heroService: HeroService) { }
 
+    /**
+     * Adds a hero
+     * @param hero Hero
+     */
     async addHero(hero: Hero) {
         const p = await this.heroService.add(hero)
         console.log(p);

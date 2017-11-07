@@ -36,10 +36,10 @@ export class AppComponent implements OnInit {
         this.getHeroes();
         this.getVillains();
     }
-    async getHeroes(): Promise<any> {
+    async getHeroes() {
         this.heroes = await this.heroService.get();
     }
-    async getVillains(): Promise<any> {
+    async getVillains() {
         this.villains = await this.villainService.get();
     }
 
@@ -49,17 +49,17 @@ export class AppComponent implements OnInit {
         };
     }
 
-    addVillain(): void {
+    addVillain() {
         this.selectedVillain = <Villain>{
             name: 'New Villain'
         };
     }
 
-    onSelect(hero: Hero): void {
+    onSelect(hero: Hero) {
         this.selectedHero = hero;
     }
 
-    onSelectVillain(villan: Villain): void {
+    onSelectVillain(villan: Villain) {
         this.selectedVillain = villan;
     }
 }

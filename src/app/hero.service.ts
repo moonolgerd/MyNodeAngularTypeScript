@@ -1,45 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, Response, RequestMethod } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Hero } from './hero';
 import { IGenericService } from './generic.service';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class HeroService implements IGenericService<Hero> {
 
-    private headers = new Headers(
-        { 'Content-Type': 'application/json' });
-    // 'Access-Control-Allow-Origin' : '*'});
     private heroesUrl = 'http://localhost:5000/api/heroes';  // URL to web api
 
-    constructor(private http: Http) { }
+    constructor(private http: HttpClient) { }
     async get(): Promise<Hero[]> {
-        const response = await this.http.get(this.heroesUrl).toPromise()
-        return response.json() as Hero[];
+        return await this.http.get<Hero[]>(this.heroesUrl).toPromise();
     }
 
     async add(hero: Hero): Promise<Hero> {
-        const options = new RequestOptions({ headers: this.headers });
-        const response = await this.http.post(this.heroesUrl, hero).toPromise();
-        return response.json() as Hero;
+        return await this.http.post<Hero>(this.heroesUrl, hero, {
+            headers: new HttpHeaders().set('Content-Type', 'application/json')
+        }).toPromise();
     };
 
     edit(hero: Hero): Observable<Hero> {
-        const options = new RequestOptions({ headers: this.headers });
-
-        return this.http.put(this.heroesUrl + '/' + hero.id, hero, options)
-            .map((r: Response) => r.json())
-            .catch(this.handleError);
+        return this.http
+        .put<Hero>(this.heroesUrl + '/' + hero.id, hero, {
+            headers: new HttpHeaders().set('Content-Type', 'application/json')
+        })
+        .catch(this.handleError);
     }
 
     delete(id: number): Observable<Hero> {
-        // const options = new RequestOptions({ headers: this.headers, method:  RequestMethod.Delete});
         const myString = `${this.heroesUrl}/${id.toString()}`;
-        return this.http.delete(myString)
-            .map((r: Response) => r.json())
+        return this.http.delete<Hero>(myString)
             .catch(this.handleError);
     }
 
