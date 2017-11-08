@@ -10,6 +10,7 @@
 <div class="row">
   <div class="col-sm-4">
     <h2>My Heroes:</h2>
+
     <ul class="heroes">
       <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" [hidden]="deleted" (click)="onSelect(hero)">
         <span class="badge">{{hero.id}}</span> {{hero.name}} is {{hero.age}}

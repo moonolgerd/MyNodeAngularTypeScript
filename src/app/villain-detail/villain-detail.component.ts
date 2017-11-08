@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Villain } from './villain';
-import { VillainService } from './villain.service';
+import { Villain } from './../villain';
+import { VillainService } from './../villain.service';
+
 @Component({
     selector: 'app-villain-detail',
     templateUrl: './villain-detail.component.html'

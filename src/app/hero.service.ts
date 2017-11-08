@@ -18,7 +18,7 @@ export class HeroService implements IGenericService<Hero> {
         return await this.http.get<Hero[]>(this.heroesUrl).toPromise();
     }
 
-    async add(hero: Hero): Promise<Hero> {
+    async add(hero: Hero) {
         return await this.http.post<Hero>(this.heroesUrl, hero, {
             headers: new HttpHeaders().set('Content-Type', 'application/json')
         }).toPromise();

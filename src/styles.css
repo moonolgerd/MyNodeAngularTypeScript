@@ -1,3 +1,4 @@
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 /* Master Styles */
 h1 {
   color: Green;

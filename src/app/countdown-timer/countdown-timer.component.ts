@@ -7,7 +7,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class CountdownTimerComponent implements OnInit, OnDestroy {
     intervalId = 0;
-    message = '';
+    message = 'Think about it';
     seconds = 100;
 
     value = 0;
