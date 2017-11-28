@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Villain } from './../villain';
-import { VillainService } from './../villain.service';
+import { Component, Input } from '@angular/core'
+import { Villain } from './../villain'
+import { VillainService } from './../villain.service'
 
 @Component({
     selector: 'app-villain-detail',
@@ -8,23 +8,20 @@ import { VillainService } from './../villain.service';
 })
 export class VillainDetailComponent {
     @Input()
-    villain: Villain;
-    roles: string[] = ['demigod', 'lessergod'];
+    villain: Villain
+    roles: string[] = ['demigod', 'lessergod']
 
     constructor(private villainService: VillainService) { }
 
-    addVillain(): void {
+    async addVillain(villain: Villain) {
+        await this.villainService.add(villain)
     }
 
-    deleteVillain(id: number) {
-        this.villainService.delete(id).subscribe(villain => {
-
-        });
+    async deleteVillain(id: number) {
+        const villain = await this.villainService.delete(id)
     }
 
-    editVillain(villain: Villain) {
-        this.villainService.edit(villain).subscribe(
-            myVillain => this.villain = myVillain);
-        //    error =>  this.errorMessage = <any>error);
+    async editVillain(villain: Villain) {
+        this.villain = await this.villainService.edit(villain)
     }
 }

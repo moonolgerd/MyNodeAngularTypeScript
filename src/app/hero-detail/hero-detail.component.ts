@@ -1,6 +1,6 @@
-import { HeroService } from './../hero.service';
-import { Component, Input } from '@angular/core';
-import { Hero } from './../hero';
+import { HeroService } from './../hero.service'
+import { Component, Input } from '@angular/core'
+import { Hero } from './../hero'
 
 @Component({
     selector: 'app-hero-detail',
@@ -9,14 +9,14 @@ import { Hero } from './../hero';
 })
 export class HeroDetailComponent {
     @Input()
-    hero: Hero;
+    hero: Hero
 
-    existing: boolean = this.hero != null;
+    existing: boolean = this.hero != null
 
     genders = [
         { value: 'F', display: 'Female' },
         { value: 'M', display: 'Male' }
-    ];
+    ]
 
     constructor(private heroService: HeroService) { }
 
@@ -26,18 +26,15 @@ export class HeroDetailComponent {
      */
     async addHero(hero: Hero) {
         const p = await this.heroService.add(hero)
-        console.log(p);
+        console.log(p)
     }
 
-    deleteHero(id: number) {
-        this.heroService.delete(id).subscribe(hero => {
-            hero.deleted = true;
-        });
+    async deleteHero(id: number) {
+        const hero = await this.heroService.delete(id)
+        hero.deleted = true
     }
 
-    editHero = (hero: Hero) => {
-        this.heroService.edit(hero).subscribe(
-            myHero => this.hero = myHero);
-        //    error =>  this.errorMessage = <any>error);
+    async editHero(hero: Hero) {
+        this.hero = await this.heroService.edit(hero)
     }
 }

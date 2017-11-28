@@ -7,7 +7,11 @@
 		"target": "es5",
 		"moduleResolution": "node",
 		"sourceMap": true,
-		"declaration": false,
+        "declaration": false,
+        "removeComments": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "strict": true,
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
 		"typeRoots": [

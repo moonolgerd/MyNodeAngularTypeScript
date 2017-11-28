@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core'
 
 @Component({
     selector: 'app-countdown-timer',
@@ -6,29 +6,29 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
     styleUrls: ['./countdown-timer.component.css']
 })
 export class CountdownTimerComponent implements OnInit, OnDestroy {
-    intervalId = 0;
-    message = 'Think about it';
-    seconds = 100;
+    intervalId = 0
+    message = 'Think about it'
+    seconds = 100
 
-    value = 0;
+    value = 0
 
     private clearTimer() {
-        this.value = 0;
-        clearInterval(this.intervalId);
-     }
-    ngOnInit() { this.start(); }
-    ngOnDestroy() { this.clearTimer(); }
+        this.value = 0
+        clearInterval(this.intervalId)
+    }
+    ngOnInit() { this.start() }
+    ngOnDestroy() { this.clearTimer() }
 
-    start() { this.countDown(); }
+    start() { this.countDown() }
 
-    stop() { this.clearTimer(); }
+    stop() { this.clearTimer() }
 
     private countDown() {
-        this.clearTimer();
+        this.clearTimer()
         this.intervalId = window.setInterval(() => {
             if (this.value <= 100) {
-            this.value ++;
+                this.value++
             }
-        }, 1000);
+        }, 1000)
     }
 }
