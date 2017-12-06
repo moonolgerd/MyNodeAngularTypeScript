@@ -1,17 +1,17 @@
 {
 	"compileOnSave": false,
 	"compilerOptions": {
-        "watch": true,
+		"watch": true,
 		"outDir": "./dist/out-tsc",
 		"baseUrl": "src",
 		"target": "es5",
 		"moduleResolution": "node",
 		"sourceMap": true,
-        "declaration": false,
-        "removeComments": true,
-        "strictFunctionTypes": true,
-        "strictNullChecks": true,
-        "strict": true,
+		"declaration": false,
+		"removeComments": true,
+		"strictFunctionTypes": false,
+		"strictNullChecks": true,
+		"strict": true,
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
 		"typeRoots": [
