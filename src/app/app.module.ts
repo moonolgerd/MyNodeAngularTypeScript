@@ -9,27 +9,40 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component'
 import { HeroService } from './hero.service'
 import { VillainService } from './villain.service'
 import { CountdownTimerComponent } from './countdown-timer/countdown-timer.component'
-import {MatButtonModule, MatCheckboxModule, MatSlideToggleModule} from '@angular/material'
+import { MatButtonModule, MatCheckboxModule, MatSlideToggleModule } from '@angular/material'
+import { RouterModule } from '@angular/router'
+import { HeroesComponent } from './heroes/heroes.component';
+import { VillainsComponent } from './villains/villains.component';
+
 @NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    MatSlideToggleModule,
-    NgbModule.forRoot()
-  ],
-  declarations: [
-    AppComponent,
-    HeroDetailComponent,
-    VillainDetailComponent,
-    CountdownTimerComponent
-],
-  providers: [
-    HeroService,
-    VillainService
-  ],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatSlideToggleModule,
+        NgbModule.forRoot(),
+        RouterModule.forRoot([
+            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: 'heroes', component: HeroesComponent },
+            { path: 'villains', component: VillainsComponent },
+            { path: 'countdown-timer', component: CountdownTimerComponent },
+            { path: '**', redirectTo: 'home' }
+        ])
+    ],
+    declarations: [
+        AppComponent,
+        HeroDetailComponent,
+        VillainDetailComponent,
+        CountdownTimerComponent,
+        HeroesComponent,
+        VillainsComponent
+    ],
+    providers: [
+        HeroService,
+        VillainService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

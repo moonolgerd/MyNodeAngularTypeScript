@@ -1,0 +1,10 @@
+<div class="col-sm-4">
+    <h2>And Villains:</h2>
+    <ul class="villains">
+        <li *ngFor="let villain of villains" [class.selected]="villain === selectedVillain" (click)="onSelectVillain(villain)">
+            <span class="badge">{{villain.id}}</span> {{villain.name}} is {{villain.level}}
+        </li>
+    </ul>
+    <app-villain-detail [villain]="selectedVillain"></app-villain-detail>
+    <input type="button" value="Add Villain" (click)="addVillain()" />
+</div>

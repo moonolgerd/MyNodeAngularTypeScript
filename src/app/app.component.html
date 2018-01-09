@@ -1,32 +1,42 @@
-<div class="jumbotron">
+<!-- <div class="jumbotron">
     <div class="container">
         <h1>{{title}}</h1>
     </div>
-</div>
+</div> -->
 
-<app-countdown-timer #timer></app-countdown-timer>
-<button (click)="timer.start()">Start</button>
-<button (click)="timer.stop()">Stop</button>
-<div class="row">
-    <div class="col-sm-4">
-        <h2>My Heroes:</h2>
+<div class='container-fluid'>
+    <div class='row'>
 
-        <ul class="heroes">
-            <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" [hidden]="hero.deleted" (click)="onSelect(hero)">
-                <span class="badge">{{hero.id}}</span> {{hero.name}} is {{hero.age}}
-            </li>
-        </ul>
-        <app-hero-detail [hero]="selectedHero"></app-hero-detail>
-        <input type="button" value="Add Hero" (click)="addHero()" />
-    </div>
-    <div class="col-sm-4">
-        <h2>And Villains:</h2>
-        <ul class="villains">
-            <li *ngFor="let villain of villains" [class.selected]="villain === selectedVillain" (click)="onSelectVillain(villain)">
-                <span class="badge">{{villain.id}}</span> {{villain.name}} is {{villain.level}}
-            </li>
-        </ul>
-        <app-villain-detail [villain]="selectedVillain"></app-villain-detail>
-        <input type="button" value="Add Villain" (click)="addVillain()" />
+        <div class='main-nav'>
+            <div class='navbar navbar-inverse'>
+                <div class='navbar-header'>
+                    <ul class='nav navbar-nav'>
+                        <li [routerLinkActive]="['link-active']">
+                            <a [routerLink]="['/']">
+                                Home
+                            </a>
+                        </li>
+                        <li [routerLinkActive]="['link-active']">
+                            <a [routerLink]="['/heroes']">
+                                Heroes
+                            </a>
+                        </li>
+                        <li [routerLinkActive]="['link-active']">
+                            <a [routerLink]="['/villains']">
+                                Villains
+                            </a>
+                        </li>
+                        <li [routerLinkActive]="['link-active']">
+                            <a [routerLink]="['/countdown-timer']">
+                                Counter
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class='col-sm-9 body-content'>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
     </div>
 </div>

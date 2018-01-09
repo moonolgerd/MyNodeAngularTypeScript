@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs/Rx'
 
-import 'rxjs/add/operator/map'
-import 'rxjs/add/operator/catch'
 import { Hero } from './hero'
 import { IGenericService } from './generic.service'
 import { HttpClient } from '@angular/common/http'
@@ -14,7 +12,7 @@ export class HeroService implements IGenericService<Hero> {
     private heroesUrl = 'http://localhost:5000/api/heroes'  // URL to web api
 
     constructor(private http: HttpClient) { }
-    get(): Promise<Hero[]> {
+    get() {
         return this.http.get<Hero[]>(this.heroesUrl).toPromise()
     }
 
