@@ -31,12 +31,19 @@
                                 Counter
                             </a>
                         </li>
+                        <li [routerLinkActive]="['link-active']">
+                            <a [routerLink]="['/admin']">
+                                Admin
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
             <div class='col-sm-9 body-content'>
                 <router-outlet></router-outlet>
             </div>
+            <a [routerLink]="[{ outlets: { popup: ['contact'] } }]">Contact</a>
+            <router-outlet name="popup"></router-outlet>
         </div>
     </div>
 </div>

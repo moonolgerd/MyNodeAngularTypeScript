@@ -8,7 +8,7 @@ import { VillainService } from './../villain.service'
 })
 export class VillainDetailComponent {
     @Input()
-    villain: Villain
+    villain: Villain | undefined
     roles: string[] = ['demigod', 'lessergod']
 
     constructor(private villainService: VillainService) { }

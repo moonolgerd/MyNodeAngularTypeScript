@@ -11,8 +11,11 @@ import { VillainService } from './villain.service'
 import { CountdownTimerComponent } from './countdown-timer/countdown-timer.component'
 import { MatButtonModule, MatCheckboxModule, MatSlideToggleModule } from '@angular/material'
 import { RouterModule } from '@angular/router'
-import { HeroesComponent } from './heroes/heroes.component';
-import { VillainsComponent } from './villains/villains.component';
+import { HeroesComponent } from './heroes/heroes.component'
+import { VillainsComponent } from './villains/villains.component'
+import { ContactComponent } from './contact/contact.component'
+import { AdminComponent } from './admin/admin.component'
+import { AuthGuard } from 'app/auth-guard.service'
 
 @NgModule({
     imports: [
@@ -28,6 +31,8 @@ import { VillainsComponent } from './villains/villains.component';
             { path: 'heroes', component: HeroesComponent },
             { path: 'villains', component: VillainsComponent },
             { path: 'countdown-timer', component: CountdownTimerComponent },
+            { path: 'contact', component: ContactComponent, outlet: 'popup' },
+            { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
             { path: '**', redirectTo: 'home' }
         ])
     ],
@@ -37,11 +42,14 @@ import { VillainsComponent } from './villains/villains.component';
         VillainDetailComponent,
         CountdownTimerComponent,
         HeroesComponent,
-        VillainsComponent
+        VillainsComponent,
+        ContactComponent,
+        AdminComponent
     ],
     providers: [
         HeroService,
-        VillainService
+        VillainService,
+        AuthGuard
     ],
     bootstrap: [AppComponent]
 })

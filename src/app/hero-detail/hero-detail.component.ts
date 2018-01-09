@@ -9,7 +9,7 @@ import { Hero } from './../hero'
 })
 export class HeroDetailComponent {
     @Input()
-    hero: Hero
+    hero: Hero = new Hero
 
     existing: boolean = this.hero != null
 

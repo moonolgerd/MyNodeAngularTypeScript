@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Villain } from 'app/villain';
-import { VillainService } from 'app/villain.service';
+import { Component, OnInit } from '@angular/core'
+import { Villain } from 'app/villain'
+import { VillainService } from 'app/villain.service'
 
 @Component({
     selector: 'app-villains',
@@ -9,9 +9,8 @@ import { VillainService } from 'app/villain.service';
 })
 export class VillainsComponent implements OnInit {
 
-    villains: Villain[]
-
-    selectedVillain: Villain
+    villains: Villain[] | undefined
+    selectedVillain: Villain = new Villain
     constructor(private villainService: VillainService) { }
 
     ngOnInit() {

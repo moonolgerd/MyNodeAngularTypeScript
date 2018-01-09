@@ -73,3 +73,9 @@
         color: magenta;
         background-color: #e7e7e7;
       }
+.navbar-nav > li > a {
+    color: yellow;
+    background: rebeccapurple;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
