@@ -1,24 +1,18 @@
 import { Injectable } from '@angular/core'
-import { Observable } from 'rxjs/Rx'
 
 import 'rxjs/add/operator/toPromise'
-import { IGenericService } from './generic.service'
 import { Villain } from './villain'
-import { HttpClient } from '@angular/common/http'
-import { HttpHeaders } from '@angular/common/http'
+import { BaseService } from './hero.service';
 
 @Injectable()
-export class VillainService implements IGenericService<Villain> {
+export class VillainService extends BaseService<Villain> {
 
-    private headers = new Headers({ 'Content-Type': 'application/json' })
     private villainsUrl = 'http://localhost:5000/api/villains'  // URL to web api
 
     private static handleError(error: any): Promise<Villain> {
         console.error('An error occurred', error) // for demo purposes only
         return Promise.reject(error.message || error)
     }
-
-    constructor(private http: HttpClient) { }
 
     async get(): Promise<Villain[]> {
         return await this.http.get<Villain[]>(this.villainsUrl).toPromise()
@@ -31,14 +25,14 @@ export class VillainService implements IGenericService<Villain> {
     }
     edit(villain: Villain) {
         return this.http.put<Villain>(this.villainsUrl + '/' + villain.id, villain, {
-            headers: new HttpHeaders().set('Content-Type', 'application/json')
+            headers: this.headers
         }).toPromise()
             .catch(VillainService.handleError)
     }
 
     add(villain: Villain) {
         return this.http.put<Villain>(this.villainsUrl + '/' + villain.id, villain, {
-            headers: new HttpHeaders().set('Content-Type', 'application/json')
+            headers: this.headers
         })
             .toPromise()
             .catch(VillainService.handleError)

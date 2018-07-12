@@ -6,25 +6,35 @@ import { IGenericService } from './generic.service'
 import { HttpClient } from '@angular/common/http'
 import { HttpHeaders } from '@angular/common/http'
 
+export abstract class BaseService<T> implements IGenericService<T> {
+
+    protected http: HttpClient
+    protected headers = new HttpHeaders().set('Content-Type', 'application/json')
+
+    abstract add(arg: T): Promise<T>
+    abstract get(): Promise<T[]>
+    abstract edit(arg: T): Promise<T>
+    abstract delete(id: number): Promise<T>
+}
+
 @Injectable()
-export class HeroService implements IGenericService<Hero> {
+export class HeroService extends BaseService<Hero> {
 
     private heroesUrl = 'http://localhost:5000/api/heroes'  // URL to web api
 
-    constructor(private http: HttpClient) { }
     get() {
         return this.http.get<Hero[]>(this.heroesUrl).toPromise()
     }
 
     add(hero: Hero) {
         return this.http.post<Hero>(this.heroesUrl, hero, {
-            headers: new HttpHeaders().set('Content-Type', 'application/json')
+            headers: this.headers
         }).toPromise()
     }
 
     edit(hero: Hero) {
         return this.http.put<Hero>(this.heroesUrl + '/' + hero.id, hero, {
-            headers: new HttpHeaders().set('Content-Type', 'application/json')
+            headers: this.headers
         }).toPromise()
     }
 
