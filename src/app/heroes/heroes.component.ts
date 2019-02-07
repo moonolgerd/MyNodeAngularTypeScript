@@ -18,9 +18,7 @@ export class HeroesComponent implements OnInit {
     }
 
     addHero() {
-        this.selectedHero = <Hero>{
-            name: 'New Hero'
-        }
+        this.selectedHero = new Hero('New Hero')
     }
 
     onSelect(hero: Hero) {

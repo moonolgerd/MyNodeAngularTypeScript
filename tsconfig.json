@@ -1,26 +1,27 @@
 {
-    "compileOnSave": false,
-    "compilerOptions": {
-        "watch": true,
-        "outDir": "./dist/out-tsc",
-        "baseUrl": "src",
-        "target": "es5",
-        "moduleResolution": "node",
-        "sourceMap": true,
-        "declaration": false,
-        "removeComments": true,
-        "strictFunctionTypes": false,
-        "strictNullChecks": true,
-        "strictPropertyInitialization": false,
-        "strict": true,
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "typeRoots": [
-            "node_modules/@types"
-        ],
-        "lib": [
-            "es2016",
-            "dom"
-        ]
-    }
+  "compileOnSave": false,
+  "compilerOptions": {
+    "watch": true,
+    "outDir": "./dist/out-tsc",
+    "baseUrl": "src",
+    "target": "es5",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "declaration": false,
+    "removeComments": true,
+    "strictFunctionTypes": false,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": false,
+    "strict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2016",
+      "dom"
+    ],
+    "module": "es2015"
+  }
 }

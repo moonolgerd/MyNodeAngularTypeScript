@@ -1,6 +1,8 @@
 export class Villain {
-  id: number
-  name: string
-  level: number
-  role: string
+
+    constructor(public readonly name: string) {
+    }
+    id?: number
+    level?: number
+    role?: string
 }

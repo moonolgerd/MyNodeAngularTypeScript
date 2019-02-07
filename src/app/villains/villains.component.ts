@@ -10,7 +10,7 @@ import { VillainService } from 'app/villain.service'
 export class VillainsComponent implements OnInit {
 
     villains: Villain[] | undefined
-    selectedVillain: Villain = new Villain
+    selectedVillain: Villain
     constructor(private villainService: VillainService) { }
 
     ngOnInit() {
@@ -22,9 +22,7 @@ export class VillainsComponent implements OnInit {
     }
 
     addVillain() {
-        this.selectedVillain = <Villain>{
-            name: 'New Villain'
-        }
+        this.selectedVillain = new Villain('New Villain')
     }
 
     onSelectVillain(villan: Villain) {
